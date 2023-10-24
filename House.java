@@ -17,7 +17,7 @@ public class House extends Building {
   }
 
   public int nResidents(){
-    return residents.size()
+    return residents.size();
   }
 
   public void moveIn(String name) {
