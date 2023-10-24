@@ -14,10 +14,57 @@ public class Library extends Building {
     }
 
     public String removeTitle(String title) {
-      collection.remove(title, false) // removing title so no longer present in collection
+      if (collection.containsKey(title)) {
+        collection.remove(title, false);
+        return title;
+      }   
+      return null;
+    }
+
+    public void checkOut(String title) {
+      if (collection.containsKey(title)) {
+        collection.put(title, false);
+      } else {
+        System.out.println("Sorry, that book is not available.");
+      }
+    }
+
+    public void returnBook(String title) {
+      if (collection.containsKey(title)) {
+        collection.put(title, true);
+      }
+    }
+
+    public boolean containsTitle(String title){
+      return collection.containsKey(title);
+    }
+
+    public boolean isAvailable(String title) {
+      if (collection.containsKey(title)) {
+        return collection.get(title);
+      } else {
+      return false;
+      }
+    }
+
+    public void printCollection(){
+      System.out.println("Current Library Selection: ");
+      for (String title : collection.keySet()) {
+        boolean available = collection.get(title);
+        System.out.println(title + (available ? " (Available)" : " (Checked Out)"));
+      }
     }
     public static void main(String[] args) {
-      new Library("Neilson", "123 Smith St.", 5);
+      Library myLib = new Library("Neilson", "123 Smith St.", 5);
+      myLib.addTitle("Really Cool Book by Mattea Whitlow");
+      myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
+      myLib.addTitle("An OK Book by Mattlow Whittea");
+      myLib.removeTitle("A Not Very Good Book by Wattea Mhitlow");
+      myLib.checkOut("Really Cool Book by Mattea Whitlow");
+      myLib.printCollection();
+      myLib.returnBook("Really Cool Book by Mattea Whitlow");
+      myLib.printCollection();
+
     }
   
   }
