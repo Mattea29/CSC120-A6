@@ -36,10 +36,21 @@ public class House extends Building {
     return residents.contains(person);
   }
 
+
   // Testing
   public static void main(String[] args) {
     House myHouse = new House("Comstock", "1 Mandelle Road", 3, true);
     System.out.println(myHouse);
+    System.out.println(myHouse.hasDiningRoom);
+    myHouse.moveIn("Mattea");
+    myHouse.moveIn("Sam");
+    System.out.println("Number of residents: " + myHouse.nResidents());
+    System.out.println("Does Mattea live here? " + myHouse.isResident("Mattea"));
+    System.out.println("Does Sam live here? " + myHouse.isResident("Sam"));
+    System.out.println("Does Una live here? " + myHouse.isResident("Una"));
+    myHouse.moveOut("Sam");
+    System.out.println("Does Sam live here? " + myHouse.isResident("Sam"));
+    System.out.println("Number of residents: " + myHouse.nResidents());
   }
 
 }
