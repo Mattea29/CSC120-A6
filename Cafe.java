@@ -32,7 +32,7 @@ public class Cafe extends Building{
         int creamShortage = Math.max(nCreams - this.nCreams, 0);
     
         if (coffeeShortage > 0 || sugarShortage > 0 || creamShortage > 0) {
-            restock(coffeeShortage, sugarShortage, creamShortage, 1); // Restock 1 cup
+            restock(2 * coffeeShortage, 2 * sugarShortage, 2 * creamShortage, 1); // Restock 1 cup
         }
     
         if (this.nCoffeeOunces >= size && this.nSugarPackets >= nSugarPackets && this.nCreams >= nCreams && this.nCups > 0) {
