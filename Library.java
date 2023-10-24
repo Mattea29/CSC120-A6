@@ -54,8 +54,11 @@ public class Library extends Building {
         System.out.println(title + (available ? " (Available)" : " (Checked Out)"));
       }
     }
+
+//Testing!!
     public static void main(String[] args) {
       Library myLib = new Library("Neilson", "123 Smith St.", 5);
+      System.out.println(myLib);
       myLib.addTitle("Really Cool Book by Mattea Whitlow");
       myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
       myLib.addTitle("An OK Book by Mattlow Whittea");

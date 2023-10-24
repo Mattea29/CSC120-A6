@@ -38,7 +38,8 @@ public class House extends Building {
 
   // Testing
   public static void main(String[] args) {
-    new House("Comstock", "1 Mandelle Road", 3, true);
+    House myHouse = new House("Comstock", "1 Mandelle Road", 3, true);
+    System.out.println(myHouse);
   }
 
 }
