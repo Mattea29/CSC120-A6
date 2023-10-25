@@ -1,4 +1,9 @@
 /* This is a stub for the House class */
+/**
+ * The House class which extends the Building class to create a new House object. Also contains methods to 
+ * return whether or not the house has a dining room, the number of residents, move in certain people, move people out
+ * and check if someone is a resident
+ */
 import java.util.ArrayList;
 public class House extends Building {
 

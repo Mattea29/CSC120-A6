@@ -15,17 +15,6 @@ public class Cafe extends Building{
         this.nCups = startingCups;
     }
 
-    // public void sellCoffee(int size, int nSugarPackets, int nCreams){
-    //     if (this.nCoffeeOunces >= size && this.nSugarPackets >= nSugarPackets && this.nCreams >= nCreams && this.nCups > 0) { // checking that there are remaining items
-    //         this.nCoffeeOunces -= size;
-    //         this.nSugarPackets -= nSugarPackets;
-    //         this.nCreams -= nCreams;
-    //         this.nCups --;
-    //     } else {
-    //         restock(size, nSugarPackets, nCreams, 1);
-    //     }
-    // }
-
     public void sellCoffee(int size, int nSugarPackets, int nCreams) {
         int coffeeShortage = Math.max(size - this.nCoffeeOunces, 0);
         int sugarShortage = Math.max(nSugarPackets - this.nSugarPackets, 0);
@@ -41,7 +30,7 @@ public class Cafe extends Building{
             this.nCreams -= nCreams;
             this.nCups--;
         }
-    } // modified to just add the difference between what the user wants and the actual stock if there is a shortage 
+    } // modified to just add twice the difference between what the user wants and the actual stock if there is a shortage so that it doesn't hit 0
 
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
         this.nCoffeeOunces += nCoffeeOunces;
