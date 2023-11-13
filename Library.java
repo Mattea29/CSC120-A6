@@ -104,21 +104,21 @@ public class Library extends Building {
     }
 
 //Testing!!
-    // public static void main(String[] args) {
-    //   Library myLib = new Library("Neilson", "123 Smith St.", 5);
-    //   System.out.println(myLib);
-    //   myLib.addTitle("Really Cool Book by Mattea Whitlow");
-    //   myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
-    //   myLib.addTitle("An OK Book by Mattlow Whittea");
-    //   myLib.removeTitle("A Not Very Good Book by Wattea Mhitlow");
-    //   myLib.checkOut("Really Cool Book by Mattea Whitlow");
-    //   myLib.printCollection();
-    //   myLib.returnBook("Really Cool Book by Mattea Whitlow");
-    //   myLib.printCollection();
-    //   myLib.removeTitle("A Book??? by MW");
-    //   myLib.returnBook("Hello by Adele");
-    //   myLib.checkOut("Butter by BTS");
+    public static void main(String[] args) {
+      Library myLib = new Library("Neilson", "123 Smith St.", 5);
+      System.out.println(myLib);
+      myLib.addTitle("Really Cool Book by Mattea Whitlow");
+      myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
+      myLib.addTitle("An OK Book by Mattlow Whittea");
+      myLib.removeTitle("A Not Very Good Book by Wattea Mhitlow");
+      myLib.checkOut("Really Cool Book by Mattea Whitlow");
+      myLib.printCollection();
+      myLib.returnBook("Really Cool Book by Mattea Whitlow");
+      myLib.printCollection();
+      myLib.removeTitle("A Book??? by MW");
+      myLib.returnBook("Hello by Adele");
+      myLib.checkOut("Butter by BTS");
 
-    // }
+    }
   
   }

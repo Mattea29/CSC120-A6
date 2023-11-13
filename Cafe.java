@@ -73,26 +73,26 @@ public class Cafe extends Building{
     }
     
     //testing!!
-    // public static void main(String[] args) {
-    //     Cafe myCafe = new Cafe("Kitty Cat Cafe", "29 Juniper St.", 2, 10, 2, 10, 25);
-    //     System.out.println(myCafe);
-    //     System.out.println("Initial inventory: ");
-    //     System.out.println("---------");
-    //     System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
-    //     System.out.println(myCafe.nSugarPackets + " packets of sugar");
-    //     System.out.println(myCafe.nCreams + " creamers");
-    //     System.out.println(myCafe.nCups + " cups");
+    public static void main(String[] args) {
+        Cafe myCafe = new Cafe("Kitty Cat Cafe", "29 Juniper St.", 2, 10, 2, 10, 25);
+        System.out.println(myCafe);
+        System.out.println("Initial inventory: ");
+        System.out.println("---------");
+        System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
+        System.out.println(myCafe.nSugarPackets + " packets of sugar");
+        System.out.println(myCafe.nCreams + " creamers");
+        System.out.println(myCafe.nCups + " cups");
 
-    //     myCafe.sellCoffee(12, 3, 3);
+        myCafe.sellCoffee(12, 3, 3);
 
-    //     System.out.println("Updated inventory: ");
-    //     System.out.println("---------");
-    //     System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
-    //     System.out.println(myCafe.nSugarPackets + " packets of sugar");
-    //     System.out.println(myCafe.nCreams + " creamers");
-    //     System.out.println(myCafe.nCups + " cups");
+        System.out.println("Updated inventory: ");
+        System.out.println("---------");
+        System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
+        System.out.println(myCafe.nSugarPackets + " packets of sugar");
+        System.out.println(myCafe.nCreams + " creamers");
+        System.out.println(myCafe.nCups + " cups");
 
 
-    // }
+    }
     
 }
