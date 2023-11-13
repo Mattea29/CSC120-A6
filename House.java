@@ -24,6 +24,11 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
+  @Override
+  public void showOptions() {
+   //super.showOptions();
+    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut \n + isResident()" );
+  }
   /**
    * method to determine whether or not the House object has a dining room
    * @return true if dining room exists, false otherwise
@@ -75,6 +80,7 @@ public class House extends Building {
   public static void main(String[] args) {
     House myHouse = new House("Comstock", "1 Mandelle Road", 3, true);
     System.out.println(myHouse);
+    myHouse.showOptions();
     System.out.println(myHouse.hasDiningRoom);
     myHouse.moveIn("Mattea");
     myHouse.moveIn("Sam");
