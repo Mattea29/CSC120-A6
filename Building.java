@@ -94,22 +94,22 @@ public class Building {
         return this.name + " is a " + this.nFloors + "-story building located at " + this.address + ".";
     }
 
-    public static void main(String[] args) {
-        System.out.println("------------------------------------");
-        System.out.println("Test of Building constructor/methods");
-        System.out.println("------------------------------------");
+    // public static void main(String[] args) {
+    //     System.out.println("------------------------------------");
+    //     System.out.println("Test of Building constructor/methods");
+    //     System.out.println("------------------------------------");
         
-        Building fordHall = new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4);
-        System.out.println(fordHall);
-        fordHall.showOptions();
+    //     Building fordHall = new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4);
+    //     System.out.println(fordHall);
+    //     fordHall.showOptions();
 
-        System.out.println("-----------------------------------");
-        System.out.println("Demonstrating enter/exit/navigation");
-        System.out.println("-----------------------------------");
-        fordHall.enter();
-        fordHall.goUp();
-        fordHall.goDown();
-        fordHall.exit();
-    }
+    //     System.out.println("-----------------------------------");
+    //     System.out.println("Demonstrating enter/exit/navigation");
+    //     System.out.println("-----------------------------------");
+    //     fordHall.enter();
+    //     fordHall.goUp();
+    //     fordHall.goDown();
+    //     fordHall.exit();
+    // }
 }
 

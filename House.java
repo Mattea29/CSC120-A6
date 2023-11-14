@@ -26,8 +26,8 @@ public class House extends Building {
 
   @Override
   public void showOptions() {
-   //super.showOptions();
-    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut \n + isResident()" );
+    super.showOptions();
+    System.out.println("House-specific options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut \n + isResident()" );
   }
   /**
    * method to determine whether or not the House object has a dining room

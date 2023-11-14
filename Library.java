@@ -22,6 +22,11 @@ public class Library extends Building {
       System.out.println("You have built a library: 📖");
     }
   
+    @Override
+    public void showOptions() {
+      super.showOptions();
+      System.out.println("Library specific ooptions at " + this.name + ": \n + addTitle() \n + removeTitle( \n + checkOut() \n + returnBook() \n + containsTitle() \n + isAvailable() \n + printCollection()");
+    }
     /**
      * method that allows user to add a book to the collection
      * @param title the title (name + author) to be added to the collection
@@ -107,6 +112,7 @@ public class Library extends Building {
     public static void main(String[] args) {
       Library myLib = new Library("Neilson", "123 Smith St.", 5);
       System.out.println(myLib);
+      myLib.showOptions();
       myLib.addTitle("Really Cool Book by Mattea Whitlow");
       myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
       myLib.addTitle("An OK Book by Mattlow Whittea");

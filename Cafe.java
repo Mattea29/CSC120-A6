@@ -28,6 +28,12 @@ public class Cafe extends Building{
         this.nCups = startingCups;
     }
 
+    @Override
+    public void showOptions() {
+      super.showOptions();
+      System.out.println("Cafe specific ooptions at " + this.name + ": \n + sellCoffee() \n + restock()");
+    }
+
     /**
      * the method to sell coffee with the user specified values for coffee, sugar, and creams.
      * In order to properly use restock so that the stock is not just set to 0 every time, the method
@@ -76,6 +82,7 @@ public class Cafe extends Building{
     public static void main(String[] args) {
         Cafe myCafe = new Cafe("Kitty Cat Cafe", "29 Juniper St.", 2, 10, 2, 10, 25);
         System.out.println(myCafe);
+        myCafe.showOptions();
         System.out.println("Initial inventory: ");
         System.out.println("---------");
         System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
