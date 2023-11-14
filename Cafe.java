@@ -34,6 +34,15 @@ public class Cafe extends Building{
       System.out.println("Cafe specific ooptions at " + this.name + ": \n + sellCoffee() \n + restock()");
     }
 
+    @Override
+    public void goToFloor(int floorNum) {
+        if (floorNum ==1) {
+            super.goToFloor(floorNum);
+        } else {
+            System.out.println("Sorry, only the first floor of " + this.name + " is available to the public.");
+        }
+    }
+
     /**
      * the method to sell coffee with the user specified values for coffee, sugar, and creams.
      * In order to properly use restock so that the stock is not just set to 0 every time, the method
@@ -83,21 +92,24 @@ public class Cafe extends Building{
         Cafe myCafe = new Cafe("Kitty Cat Cafe", "29 Juniper St.", 2, 10, 2, 10, 25);
         System.out.println(myCafe);
         myCafe.showOptions();
-        System.out.println("Initial inventory: ");
-        System.out.println("---------");
-        System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
-        System.out.println(myCafe.nSugarPackets + " packets of sugar");
-        System.out.println(myCafe.nCreams + " creamers");
-        System.out.println(myCafe.nCups + " cups");
+        myCafe.enter();
+        myCafe.goToFloor(1);
+        myCafe.goToFloor(2);
+        // System.out.println("Initial inventory: ");
+        // System.out.println("---------");
+        // System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
+        // System.out.println(myCafe.nSugarPackets + " packets of sugar");
+        // System.out.println(myCafe.nCreams + " creamers");
+        // System.out.println(myCafe.nCups + " cups");
 
-        myCafe.sellCoffee(12, 3, 3);
+        // myCafe.sellCoffee(12, 3, 3);
 
-        System.out.println("Updated inventory: ");
-        System.out.println("---------");
-        System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
-        System.out.println(myCafe.nSugarPackets + " packets of sugar");
-        System.out.println(myCafe.nCreams + " creamers");
-        System.out.println(myCafe.nCups + " cups");
+        // System.out.println("Updated inventory: ");
+        // System.out.println("---------");
+        // System.out.println(myCafe.nCoffeeOunces + " ounces of coffee");
+        // System.out.println(myCafe.nSugarPackets + " packets of sugar");
+        // System.out.println(myCafe.nCreams + " creamers");
+        // System.out.println(myCafe.nCups + " cups");
 
 
     }

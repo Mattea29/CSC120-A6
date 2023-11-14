@@ -9,6 +9,7 @@ public class Library extends Building {
 
   // the empty hashtable which will store the residents information but cannot be accessed otherwise for privacy 
   private Hashtable<String, Boolean> collection;
+  private boolean hasElevator;
 
   /**
    * creates new Library with Building attributes plus other necessary attributes
@@ -16,16 +17,26 @@ public class Library extends Building {
    * @param address the address of the library
    * @param nFloors the number of floors of the library 
    */
-    public Library(String name, String address, int nFloors) {
+    public Library(String name, String address, int nFloors, boolean hasElevator) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String, Boolean>();
       System.out.println("You have built a library: 📖");
+      this.hasElevator = hasElevator;
     }
   
     @Override
     public void showOptions() {
       super.showOptions();
       System.out.println("Library specific ooptions at " + this.name + ": \n + addTitle() \n + removeTitle( \n + checkOut() \n + returnBook() \n + containsTitle() \n + isAvailable() \n + printCollection()");
+    }
+
+    @Override
+    public void goToFloor(int floorNum) {
+      if (this.hasElevator) {
+        super.goToFloor(floorNum);
+      } else {
+        System.out.println("Sorry, there is no elevator.");
+      }
     }
     /**
      * method that allows user to add a book to the collection
@@ -110,20 +121,24 @@ public class Library extends Building {
 
 //Testing!!
     public static void main(String[] args) {
-      Library myLib = new Library("Neilson", "123 Smith St.", 5);
+      Library myLib = new Library("Neilson", "123 Smith St.", 5, true);
       System.out.println(myLib);
       myLib.showOptions();
-      myLib.addTitle("Really Cool Book by Mattea Whitlow");
-      myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
-      myLib.addTitle("An OK Book by Mattlow Whittea");
-      myLib.removeTitle("A Not Very Good Book by Wattea Mhitlow");
-      myLib.checkOut("Really Cool Book by Mattea Whitlow");
-      myLib.printCollection();
-      myLib.returnBook("Really Cool Book by Mattea Whitlow");
-      myLib.printCollection();
-      myLib.removeTitle("A Book??? by MW");
-      myLib.returnBook("Hello by Adele");
-      myLib.checkOut("Butter by BTS");
+      myLib.enter();
+      myLib.goToFloor(2);
+      myLib.goToFloor(1);
+      myLib.exit();
+      // myLib.addTitle("Really Cool Book by Mattea Whitlow");
+      // myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
+      // myLib.addTitle("An OK Book by Mattlow Whittea");
+      // myLib.removeTitle("A Not Very Good Book by Wattea Mhitlow");
+      // myLib.checkOut("Really Cool Book by Mattea Whitlow");
+      // myLib.printCollection();
+      // myLib.returnBook("Really Cool Book by Mattea Whitlow");
+      // myLib.printCollection();
+      // myLib.removeTitle("A Book??? by MW");
+      // myLib.returnBook("Hello by Adele");
+      // myLib.checkOut("Butter by BTS");
 
     }
   

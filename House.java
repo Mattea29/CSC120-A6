@@ -5,10 +5,13 @@
  * and check if someone is a resident
  */
 import java.util.ArrayList;
+
 public class House extends Building {
 
   private ArrayList<String> residents; //array containing resident names
   private boolean hasDiningRoom;
+  private boolean hasElevator; // useful for allowing movement between floors
+  private int maxResidents;
 
   /**
    * constructor which creates the House object and prints a message to let us know it was successful
@@ -17,10 +20,18 @@ public class House extends Building {
    * @param nFloors the number of floors in the House, integer
    * @param hasDiningRoom boolean value indicating whether or not the house has a dining room
    */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
     this.hasDiningRoom = hasDiningRoom;
     this.residents = new ArrayList<>();
+    System.out.println("You have built a house: 🏠");
+    this.hasElevator = hasElevator;
+  }
+
+  public House(String name, String address, int nFloors, int maxResidents) {
+    super(name, address, nFloors);
+    this.residents = new ArrayList<>();
+    this.maxResidents = maxResidents;
     System.out.println("You have built a house: 🏠");
   }
 
@@ -29,6 +40,17 @@ public class House extends Building {
     super.showOptions();
     System.out.println("House-specific options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut \n + isResident()" );
   }
+
+  @Override
+  public void goToFloor(int floorNum) {
+    if (this.hasElevator) {
+      System.out.println("Elevator present");
+      super.goToFloor(floorNum);  
+    } else {
+      System.out.println("Sorry, there is no elevator");
+    }
+  }
+
   /**
    * method to determine whether or not the House object has a dining room
    * @return true if dining room exists, false otherwise
@@ -54,6 +76,20 @@ public class House extends Building {
   }
 
   /**
+   * Overloaded moveIn method
+   * @param name
+   * 
+   */
+
+  public void moveIn(String name) {
+    if (residents.size() < maxResidents) {
+      residents.add(name);
+      System.out.println(name + " has moved into " + this.name);
+    } else {
+      System.out.println("Sorry, " + name + " cannot move in. " + this.name + " is full.");
+    }
+  }
+  /**
    * method to move a resident out of the House given a name input, which is then removed from the array as long as it exists already
    * @param name the name of the resident to be removed
    * @return the name of the resident who has left if they lived in the house, returns null otherwise
@@ -78,19 +114,27 @@ public class House extends Building {
 
   //Testing
   public static void main(String[] args) {
-    House myHouse = new House("Comstock", "1 Mandelle Road", 3, true);
+    House myHouse = new House("Comstock", "1 Mandelle Road", 3, true, true);
+    House testHouse = new House("Wilson", "123 Smith Road", 4, 90);
+    testHouse.moveIn("Jordan");
     System.out.println(myHouse);
     myHouse.showOptions();
     System.out.println(myHouse.hasDiningRoom);
-    myHouse.moveIn("Mattea");
-    myHouse.moveIn("Sam");
-    System.out.println("Number of residents: " + myHouse.nResidents());
-    System.out.println("Does Mattea live here? " + myHouse.isResident("Mattea"));
-    System.out.println("Does Sam live here? " + myHouse.isResident("Sam"));
-    System.out.println("Does Una live here? " + myHouse.isResident("Una"));
-    myHouse.moveOut("Sam");
-    System.out.println("Does Sam live here? " + myHouse.isResident("Sam"));
-    System.out.println("Number of residents: " + myHouse.nResidents());
+    System.out.println(myHouse.hasElevator);
+    myHouse.enter();
+    myHouse.goToFloor(2);
+    myHouse.goToFloor(1);
+    myHouse.goToFloor(6);
+    // myHouse.moveIn("Mattea");
+    // myHouse.moveIn("Sam");
+    // System.out.println("Number of residents: " + myHouse.nResidents());
+    // System.out.println("Does Mattea live here? " + myHouse.isResident("Mattea"));
+    // System.out.println("Does Sam live here? " + myHouse.isResident("Sam"));
+    // System.out.println("Does Una live here? " + myHouse.isResident("Una"));
+    // myHouse.moveOut("Sam");
+
+    // System.out.println("Does Sam live here? " + myHouse.isResident("Sam"));
+    // System.out.println("Number of residents: " + myHouse.nResidents());
   }
 
 }
