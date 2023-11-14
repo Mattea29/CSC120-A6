@@ -81,12 +81,20 @@ public class House extends Building {
    * 
    */
 
-  public void moveIn(String name) {
-    if (residents.size() < maxResidents) {
-      residents.add(name);
-      System.out.println(name + " has moved into " + this.name);
+  public boolean canMove() {
+    if (this.nResidents() < maxResidents) {
+      return true;
     } else {
-      System.out.println("Sorry, " + name + " cannot move in. " + this.name + " is full.");
+      return false;
+    }
+  }
+
+  public void moveIn(boolean canMove, String name) {
+    if (this.canMove()) {
+      residents.add(name);
+      System.out.println(name + " has moved in to " + this.name);
+    } else{
+      System.out.println(name + " cannot move in. " + this.name + "full.");
     }
   }
   /**
@@ -116,15 +124,16 @@ public class House extends Building {
   public static void main(String[] args) {
     House myHouse = new House("Comstock", "1 Mandelle Road", 3, true, true);
     House testHouse = new House("Wilson", "123 Smith Road", 4, 90);
-    testHouse.moveIn("Jordan");
-    System.out.println(myHouse);
-    myHouse.showOptions();
-    System.out.println(myHouse.hasDiningRoom);
-    System.out.println(myHouse.hasElevator);
-    myHouse.enter();
-    myHouse.goToFloor(2);
-    myHouse.goToFloor(1);
-    myHouse.goToFloor(6);
+    System.out.println(testHouse);
+    testHouse.canMove();
+    //System.out.println(myHouse);
+    // myHouse.showOptions();
+    // System.out.println(myHouse.hasDiningRoom);
+    // System.out.println(myHouse.hasElevator);
+    // myHouse.enter();
+    // myHouse.goToFloor(2);
+    // myHouse.goToFloor(1);
+    // myHouse.goToFloor(6);
     // myHouse.moveIn("Mattea");
     // myHouse.moveIn("Sam");
     // System.out.println("Number of residents: " + myHouse.nResidents());
