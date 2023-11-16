@@ -11,7 +11,8 @@ public class House extends Building {
   private ArrayList<String> residents; //array containing resident names
   private boolean hasDiningRoom;
   private boolean hasElevator; // useful for allowing movement between floors
-  private int maxResidents;
+  private int maxCapacity;
+ 
 
   /**
    * constructor which creates the House object and prints a message to let us know it was successful
@@ -19,6 +20,7 @@ public class House extends Building {
    * @param address the address of the House, String
    * @param nFloors the number of floors in the House, integer
    * @param hasDiningRoom boolean value indicating whether or not the house has a dining room
+   * @param hasElevator a boolean value indicating whether or not the house has an elevator 
    */
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
@@ -28,12 +30,25 @@ public class House extends Building {
     this.hasElevator = hasElevator;
   }
 
-  public House(String name, String address, int nFloors, int maxResidents) {
+  /**
+   * Overloaded constructor of house object
+   * @param name the name of the House, String
+   * @param address the address of the House, String
+   * @param nFloors the number of floors in the House, integer
+   * @param hasDiningRoom boolean value indicating whether or not the house has a dining room
+   * @param hasElevator a boolean value indicating whether or not the house has an elevator 
+   * @param maxCapacity the maximum number of residents
+   *
+   */
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator, int maxCapacity) {
     super(name, address, nFloors);
+    this.hasDiningRoom = hasDiningRoom;
+    this.hasElevator= hasElevator;
     this.residents = new ArrayList<>();
-    this.maxResidents = maxResidents;
+    this.maxCapacity = maxCapacity;
     System.out.println("You have built a house: 🏠");
   }
+
 
   @Override
   public void showOptions() {
@@ -75,28 +90,7 @@ public class House extends Building {
     residents.add(name);
   }
 
-  /**
-   * Overloaded moveIn method
-   * @param name
-   * 
-   */
-
-  public boolean canMove() {
-    if (this.nResidents() < maxResidents) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public void moveIn(boolean canMove, String name) {
-    if (this.canMove()) {
-      residents.add(name);
-      System.out.println(name + " has moved in to " + this.name);
-    } else{
-      System.out.println(name + " cannot move in. " + this.name + "full.");
-    }
-  }
+  
   /**
    * method to move a resident out of the House given a name input, which is then removed from the array as long as it exists already
    * @param name the name of the resident to be removed
@@ -123,9 +117,9 @@ public class House extends Building {
   //Testing
   public static void main(String[] args) {
     House myHouse = new House("Comstock", "1 Mandelle Road", 3, true, true);
-    House testHouse = new House("Wilson", "123 Smith Road", 4, 90);
+    House testHouse = new House("Wilson", "123 Smith Road", 4, true, true, 90);
     System.out.println(testHouse);
-    testHouse.canMove();
+    testHouse.canMove("elisa");
     //System.out.println(myHouse);
     // myHouse.showOptions();
     // System.out.println(myHouse.hasDiningRoom);
