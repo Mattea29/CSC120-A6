@@ -88,7 +88,24 @@ public class House extends Building {
    */
   public void moveIn(String name) {
     residents.add(name);
+    System.out.println(name + " has moved in." );
   }
+  /**
+   * Overload method for moveIn which will check the maximum residents and determine if there is space before taking any action. It also adds their grade level
+   * (i.e. freshman, sophmore, junior, or senior)
+   * @param name the name of the person trying to move in
+   * @param grade the year of the person trying to move in
+   * 
+   */
+
+   public void moveIn(String name, String grade) {
+    if (residents.size() < maxCapacity) {
+      residents.add(name);
+      System.out.println(name + " has moved into " + this.name + ". " + name + " is a " + grade);
+    } else {
+      System.out.println("House is full. " + name + " cannot move in at this time.");
+    }
+   }
 
   
   /**
@@ -117,9 +134,16 @@ public class House extends Building {
   //Testing
   public static void main(String[] args) {
     House myHouse = new House("Comstock", "1 Mandelle Road", 3, true, true);
-    House testHouse = new House("Wilson", "123 Smith Road", 4, true, true, 90);
+    House testHouse = new House("Wilson", "123 Smith Road", 4, true, true, 2);
     System.out.println(testHouse);
-    testHouse.canMove("elisa");
+    System.out.println(myHouse);
+    testHouse.enter();
+    testHouse.goToFloor(2);
+    testHouse.moveIn("Mattea","Junior");
+    testHouse.moveIn("Sam");
+    testHouse.moveIn("Una", "Junior");
+    myHouse.enter();
+    
     //System.out.println(myHouse);
     // myHouse.showOptions();
     // System.out.println(myHouse.hasDiningRoom);
