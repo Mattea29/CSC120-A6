@@ -6,12 +6,12 @@
  */
 import java.util.Hashtable;
 import java.time.LocalDate; // for assigning due dates!!
-import java.time.temporal.ChronoUnit;
 
 public class Library extends Building {
 
   // the empty hashtable which will store the residents information but cannot be accessed otherwise for privacy 
   private Hashtable<String, Boolean> collection;
+  private Hashtable<String, LocalDate> collectionWithDates;
   private boolean hasElevator;
 
   /**
@@ -25,6 +25,7 @@ public class Library extends Building {
       this.collection = new Hashtable<String, Boolean>();
       System.out.println("You have built a library: 📖");
       this.hasElevator = hasElevator;
+      this.collectionWithDates = new Hashtable<String, LocalDate>();
     }
   
     @Override
@@ -77,7 +78,7 @@ public class Library extends Building {
     }
 
     /**
-     * Overloaded method that allows users to checkout a certain book if it is available and changes the availablity status to false, plus assigns a user specified due date
+     * Overloaded method that allows users to checkout a certain book if it is available and changes the availablity status to false, plus assigns a due date that the book must be returned by
      * @param title the title to be checked out
      * @param daysDue an int representing the number of days remaining until the book is due; limited to 21, so if the user puts more than 21 messages, it will be automatically limited to 21
      */
@@ -88,6 +89,7 @@ public class Library extends Building {
       if (isAvailable(title)) {
         collection.put(title, false);
         System.out.println("Checked out: " + title + ". Due date: " + dueDate);
+        collectionWithDates.put(title, dueDate); //storing due date to be used later in returnBook method!
       } else {
         System.out.println("Sorry, that book is not available.");
       }
@@ -103,6 +105,26 @@ public class Library extends Building {
         System.out.println(title + " is not in the collection and cannot be returned.");
       }
     }
+
+   public void returnBook(String title, LocalDate returnDate) {
+    if (containsTitle(title)) {
+      collection.put(title, true);
+
+      if (collectionWithDates.containsKey(title)) {
+        LocalDate dueDate = collectionWithDates.get(title);
+        if (returnDate.isBefore(dueDate)) {
+          System.out.println("Thank you! " + title + " returned on time.");
+        } else {
+          System.out.println(title + " returned late. Sleep with one eye open.");
+        }
+        collectionWithDates.remove(title); //removing because it is no longer associated with a due date
+      } else {
+        System.out.println(title + " returned. Due date not found.");
+      }
+    } else {
+      System.out.println(title + " is not in the collection and cannot be returned.");
+    }
+   }
 
     /**
      * method that checks whether the collection contains the title
@@ -151,6 +173,13 @@ public class Library extends Building {
       myLib.addTitle("Goodbye by You");
       myLib.checkOut("Hello by Me");
       myLib.checkOut("Goodbye by You", 14);
+      myLib.addTitle("This is a book by Anonymous");
+      myLib.checkOut("This is a book by Anonymous", 30);
+      myLib.returnBook("Hello by Me");
+      myLib.returnBook("Goodbye by You", LocalDate.now());
+      LocalDate currentDate = LocalDate.now();
+      LocalDate overDue = currentDate.plusWeeks(4);
+      myLib.returnBook("This is a book by Anonymous", overDue);
       // myLib.addTitle("Really Cool Book by Mattea Whitlow");
       // myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
       // myLib.addTitle("An OK Book by Mattlow Whittea");
