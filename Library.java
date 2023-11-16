@@ -106,6 +106,12 @@ public class Library extends Building {
       }
     }
 
+    /**
+     * Overloaded method that allows the user to return a book on a specified date and checks whether or not the due date was met, then chooses the 
+     * appropriate message to send
+     * @param title the title of the book being returned
+     * @param returnDate the date that the book is being returned on -- user should either specify today as LocalDate.now() or give a specific date by assigning a LocalDate object in the future
+     */
    public void returnBook(String title, LocalDate returnDate) {
     if (containsTitle(title)) {
       collection.put(title, true);
