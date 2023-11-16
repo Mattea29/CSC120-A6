@@ -5,6 +5,9 @@
  * inventory and availability, and printing the entire inventory
  */
 import java.util.Hashtable;
+import java.time.LocalDate; // for assigning due dates!!
+import java.time.temporal.ChronoUnit;
+
 public class Library extends Building {
 
   // the empty hashtable which will store the residents information but cannot be accessed otherwise for privacy 
@@ -74,6 +77,22 @@ public class Library extends Building {
     }
 
     /**
+     * Overloaded method that allows users to checkout a certain book if it is available and changes the availablity status to false, plus assigns a user specified due date
+     * @param title the title to be checked out
+     * @param daysDue an int representing the number of days remaining until the book is due; limited to 21, so if the user puts more than 21 messages, it will be automatically limited to 21
+     */
+    public void checkOut(String title, int daysDue) {
+      daysDue = Math.min(daysDue, 21);
+      LocalDate dueDate = LocalDate.now().plusDays(daysDue);
+
+      if (isAvailable(title)) {
+        collection.put(title, false);
+        System.out.println("Checked out: " + title + ". Due date: " + dueDate);
+      } else {
+        System.out.println("Sorry, that book is not available.");
+      }
+    }
+    /**
      * method for user to return a book if it exists in the collection, and if so, change available status to true
      * @param title the title to be returned
      */
@@ -128,6 +147,10 @@ public class Library extends Building {
       myLib.goToFloor(2);
       myLib.goToFloor(1);
       myLib.exit();
+      myLib.addTitle("Hello by Me");
+      myLib.addTitle("Goodbye by You");
+      myLib.checkOut("Hello by Me");
+      myLib.checkOut("Goodbye by You", 14);
       // myLib.addTitle("Really Cool Book by Mattea Whitlow");
       // myLib.addTitle("A Not Very Good Book by Wattea Mhitlow");
       // myLib.addTitle("An OK Book by Mattlow Whittea");
