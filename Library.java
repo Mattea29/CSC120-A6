@@ -28,12 +28,19 @@ public class Library extends Building {
       this.collectionWithDates = new Hashtable<String, LocalDate>();
     }
   
+  /**
+   * Overriden showOptions method which includes the specific methods available in the Cafe class
+   */
     @Override
     public void showOptions() {
       super.showOptions();
       System.out.println("Library specific ooptions at " + this.name + ": \n + addTitle() \n + removeTitle( \n + checkOut() \n + returnBook() \n + containsTitle() \n + isAvailable() \n + printCollection()");
     }
 
+  /**
+   * Overriden goToFloor method which checks for the existence of an elevator and then either invokes the behavior of the parent class goToFloor method or
+   * sends appropriate message
+   */
     @Override
     public void goToFloor(int floorNum) {
       if (this.hasElevator) {
@@ -42,6 +49,7 @@ public class Library extends Building {
         System.out.println("Sorry, there is no elevator.");
       }
     }
+    
     /**
      * method that allows user to add a book to the collection
      * @param title the title (name + author) to be added to the collection

@@ -8,17 +8,21 @@ public class Cafe extends Building{
     private int nSugarPackets;
     private int nCreams;
     private int nCups;
+    private int maxCoffee;
+    private int maxSugar;
+    private int maxCream;
+    private int maxCups;
     
-/**
- * The constructor which creates a new Cafe object given the following parameters
- * @param name the name of the Cafe
- * @param address the address of the Cafe
- * @param nFloors the number of floors of the Cafe
- * @param startingCoffee the starting amount of coffee in ounces
- * @param startingSugar the starting number of sugar packets
- * @param startingCreams the starting number of creamers
- * @param startingCups the starting number of cups
- */
+    /**
+    * The constructor which creates a new Cafe object given the following parameters
+    * @param name the name of the Cafe
+    * @param address the address of the Cafe
+    * @param nFloors the number of floors of the Cafe
+    * @param startingCoffee the starting amount of coffee in ounces
+    * @param startingSugar the starting number of sugar packets
+    * @param startingCreams the starting number of creamers
+    * @param startingCups the starting number of cups
+    */
     public Cafe(String name, String address, int nFloors, int startingCoffee, int startingSugar, int startingCreams, int startingCups) {
         super(name, address, nFloors);
         System.out.println("You have built a cafe: ☕");
@@ -28,12 +32,45 @@ public class Cafe extends Building{
         this.nCups = startingCups;
     }
 
+    /**
+     * Overloaded constructor which creates a new Cafe object with maximum stock values!
+     * @param name the name of the Cafe
+     * @param address the address of the Cafe
+     * @param nFloors the number of floors in the Cafe
+     * @param startingCoffee the starting amount of coffee in ounces
+     * @param startingSugar the starting number of sugar packets
+     * @param startingCreams the starting number of creamers
+     * @param startingCups the starting number of cups
+     * @param maxCoffee the maximum amount of coffee in ounces that the cafe can store
+     * @param maxSugar the maximum number of sugar packets that can be stored
+     * @param maxCream the maximum number of creamers that can be stored
+     * @param maxCups the maximum number of cups that can be stored
+     */
+    public Cafe(String name, String address, int nFloors, int startingCoffee, int startingSugar, int startingCreams, int startingCups, int maxCoffee, int maxSugar, int maxCream, int maxCups) {
+        super(name, address, nFloors);
+        System.out.println("You have built a cafe: ☕");
+        this.nCoffeeOunces = startingCoffee;
+        this.nSugarPackets = startingSugar;
+        this.nCreams = startingCreams;
+        this.nCups = startingCups;
+        this.maxCoffee = maxCoffee;
+        this.maxSugar = maxSugar;
+        this.maxCream = maxCream;
+        this.maxCups = maxCups;
+    }
+
+    /**
+     * Overriden showOptions method which includes the specific methods available in the Cafe class
+     */
     @Override
     public void showOptions() {
       super.showOptions();
       System.out.println("Cafe specific ooptions at " + this.name + ": \n + sellCoffee() \n + restock()");
     }
 
+    /**
+     * Overridden goToFloor method which prohibits user from going to a floor other than the 1st
+     */
     @Override
     public void goToFloor(int floorNum) {
         if (floorNum ==1) {
@@ -73,6 +110,14 @@ public class Cafe extends Building{
     } // modified to just add twice the difference between what the user wants and the actual stock if there is a shortage so that it doesn't hit 0
 
     /**
+     * 
+     * @param size
+     */
+    public void sellCoffee(int size, intnSugarPackets, intnCreams, int nCups) {
+
+    }
+
+    /**
      * the method to restock the cafe supplies if called in the sellCoffee method
      * @param nCoffeeOunces the number of ounces of coffee to restock 
      * @param nSugarPackets the number of sugar packets to be restocked
@@ -85,6 +130,17 @@ public class Cafe extends Building{
         this.nCreams += nCreams;
         this.nCups += nCups;
         System.out.println("Restocked: " + nCups +  " cups, " + nCoffeeOunces + " oz. coffee, " + nSugarPackets + " sugar packets, " + nCreams + " creamers.");
+    }
+
+    /**
+     * Overloaded method that will restock the cafe supplies to the maximum amount
+     */
+    public void restock() {
+        this.nCoffeeOunces = maxCoffee;
+        this.nSugarPackets = maxSugar;
+        this.nCreams = maxCream;
+        this.nCups = maxCups;
+        System.out.println("All items restocked to maximum capacity");
     }
     
     //testing!!

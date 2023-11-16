@@ -49,13 +49,19 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
-
+  /**
+   * Overriden showOptions method which includes the specific methods available in the Cafe class
+   */
   @Override
   public void showOptions() {
     super.showOptions();
     System.out.println("House-specific options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut \n + isResident()" );
   }
 
+  /**
+   * Overriden goToFloor method which checks for the existence of an elevator and then either invokes the behavior of the parent class goToFloor method or
+   * sends appropriate message
+   */
   @Override
   public void goToFloor(int floorNum) {
     if (this.hasElevator) {
